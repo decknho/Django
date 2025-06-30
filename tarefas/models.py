@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class Tarefa(models.Model):
+    titulo = models.CharField(max_length=200, null=False, blank=False)
+    descricao = models.TextField()
+    criada_em = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    prazo = models.DateTimeField(null=False, blank=False)
+    concluida_em = models.DateTimeField(auto_now_add=True, null=False, blank=False)
