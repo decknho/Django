@@ -9,6 +9,12 @@
 
 <body>
     <h1>Lista de Tarefas</h1>
+    <br>
+    <ul>
+        {% for tarefa in tarefas %}
+            <li>{{ tarefa }}</li>
+        {% endfor %}
+    </ul>
 </body>
 
 </html>
