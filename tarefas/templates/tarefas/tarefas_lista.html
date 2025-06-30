@@ -20,19 +20,22 @@
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Titulo</th>
-                    <th scope="col">Criado em</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Críado em</th>
                     <th scope="col">Prazo para finalização</th>
-                    <th scope="col">Concluída em</th>
+                    <th scope="col">Finalizada em</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
+                    {% for tarefa in tarefas %}
+                        <tr>
+                            <th scope="row">{{ tarefa.id }}</th>
+                            <td>{{ tarefa.titulo }}</td>
+                            <td>{{ tarefa.criada_em }}</td>
+                            <td>{{ tarefa.prazo }}</td>
+                            <td>{{ tarefa.concluida_em | default:"-" }} </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
     </table>
         </main>
