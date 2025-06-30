@@ -7,19 +7,26 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Tarefa',
+            name="Tarefa",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('titulo', models.CharField(max_length=200)),
-                ('descricao', models.TextField()),
-                ('criada_em', models.DateTimeField(auto_now_add=True)),
-                ('prazo', models.DateTimeField()),
-                ('concluida_em', models.DateTimeField(auto_now_add=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("titulo", models.CharField(max_length=200)),
+                ("descricao", models.TextField()),
+                ("criada_em", models.DateTimeField(auto_now_add=True)),
+                ("prazo", models.DateTimeField()),
+                ("concluida_em", models.DateTimeField(auto_now_add=True)),
             ],
         ),
     ]
