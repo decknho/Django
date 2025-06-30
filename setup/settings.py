@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tarefas.apps.TarefasConfig',  # Include the tarefas app
 ]
 
 MIDDLEWARE = [
