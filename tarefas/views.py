@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.views.generic import ListView, CreateView
+from django.urls import reverse_lazy
 
 from .models import Tarefa
 
+class TarefaListView(ListView):
+    model = Tarefa
 
-def tarefas_lista(request):
-    tarefas = Tarefa.objects.all()
-    return render(request, "tarefas/tarefas_lista.html", {"tarefas": tarefas})
+
+class TarefaCreateView(CreateView):
+    model = Tarefa
+    fields = ["titulo", "prazo"]
+    success_url = reverse_lazy("tarefa_list")
+
