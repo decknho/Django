@@ -1,61 +1,45 @@
-<!doctype html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Lista de Tarefas</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    </head>
-    <body style="background-color:rgb(43, 43, 43);">
-        <nav class="navbar" style="background-color:rgb(255, 255, 255);" data-bs-theme="light">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Gerenciador de Tarefas</a>
-            </div>
-        </nav>
+{% extends "base.html" %}
 
-        <main class="container">
-            <div class="bg-white text-black p-4 rounded position-absolute top-50 start-50 translate-middle" style="min-width: 600px; width: 80%; max-width: 1000px;">
-                <h1 class="text-center">Lista de Tarefas</h1>
-                <br>
-                {% if tarefa_list %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Título</th>
-                        <th scope="col">Críado em</th>
-                        <th scope="col">Prazo para finalização</th>
-                        <th scope="col">Finalizada em</th>
-                        <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for tarefa in tarefa_list %}
-                            <tr>
-                                <th scope="row">{{ tarefa.id }}</th>
-                                <td>{{ tarefa.titulo }}</td>
-                                <td>{{ tarefa.criada_em }}</td>
-                                <td>{{ tarefa.prazo }}</td>
-                                <td>{{ tarefa.concluida_em | default:"-" }} </td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary">Editar</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Excluir</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                    <p>Não há tarefas cadastradas.</p>
-                {% endif %}
-                
-                <div class="text-center mt-3">
-                    <a href="{% url 'tarefa_create' %}" class="btn btn-primary">Criar nova tarefa</a>
-                </div>
+{% block page_title %}Lista de Tarefas{% endblock page_title %}
+
+{% block content %}
+    <div class="bg-white text-black p-4 rounded position-absolute top-50 start-50 translate-middle" style="min-width: 600px; width: 80%; max-width: 1000px;">
+        <h1 class="text-center">Lista de Tarefas</h1>
+        <br>
+        {% if tarefa_list %}
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Críado em</th>
+                <th scope="col">Prazo para finalização</th>
+                <th scope="col">Finalizada em</th>
+                <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarefa in tarefa_list %}
+                    <tr>
+                        <th scope="row">{{ tarefa.id }}</th>
+                        <td>{{ tarefa.titulo }}</td>
+                        <td>{{ tarefa.criada_em }}</td>
+                        <td>{{ tarefa.prazo }}</td>
+                        <td>{{ tarefa.concluida_em | default:"-" }} </td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="#" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Não há tarefas cadastradas.</p>
+        {% endif %}
+        
+        <div class="text-center mt-3">
+            <a href="{% url 'tarefa_create' %}" class="btn btn-primary">Criar nova tarefa</a>
         </div>
-
-        </main>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-    </body>
-</html>
+    </div>
+{% endblock content %}
