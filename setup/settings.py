@@ -83,10 +83,25 @@ WSGI_APPLICATION = "setup.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     "default": config(
         "DATABASE_URL", default=f'sqlite:///{BASE_DIR / "db.sqlite3"}', cast=db_url
     )
+}"""
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'saturno',  # Name of your MySQL database
+        'USER': 'Decknho',    # MySQL username
+        'PASSWORD': 'ypb@3571', # MySQL password
+        'HOST': 'localhost',          # Or the IP address/hostname of your MySQL server
+        'PORT': '3306',               # Default MySQL port
+        'OPTIONS': {
+            'charset': 'utf8mb4',  # Use utf8mb4 for full Unicode support
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",  # Ensure the connection uses utf8mb4
+        }
+    }
 }
 
 
