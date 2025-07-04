@@ -29,3 +29,8 @@ venv.bak/
 # OS files
 .DS_Store
 Thumbs.db
+
+# .Git files
+.git/
+.gitignore
+.gitattributes
