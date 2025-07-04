@@ -90,20 +90,14 @@ WSGI_APPLICATION = "setup.wsgi.application"
 }"""
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'saturno',  # Name of your MySQL database
-        'USER': 'Decknho',    # MySQL username
-        'PASSWORD': 'ypb@3571', # MySQL password
-        'HOST': 'localhost',          # Or the IP address/hostname of your MySQL server
-        'PORT': '3306',               # Default MySQL port
-        'OPTIONS': {
-            'charset': 'utf8mb4',  # Use utf8mb4 for full Unicode support
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",  # Ensure the connection uses utf8mb4
-        }
-    }
+    'default': db_url(config('DATABASE_URL'))
 }
 
+# Adicionando opções extras manualmente
+DATABASES['default']['OPTIONS'] = {
+    'charset': 'utf8mb4',
+    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
